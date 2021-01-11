@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--导入属性配置 -->
+    <!--<properties resource="generator.properties"></properties>-->
+    <classPathEntry
+            location="D:\sitech_work\tools\maven_repo\mysql\driver\mysql-connector-java\5.1\mysql-connector-java-5.1.jar"/>
+    <context id="my" targetRuntime="MyBatis3" defaultModelType="flat">
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="false"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/guli?serverTimezone=GMT%2B8"
+                        userId="root"
+                        password="123456"/>
+
+        <javaModelGenerator targetPackage="com.dangqp.eduservice.test"
+                            targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.dangqp.eduservice.test"
+                         targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetPackage="com.dangqp.eduservice.test"
+                             targetProject="src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="edu_teacher" modelType="flat"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="true"
+               enableSelectByPrimaryKey="true"
+               selectByPrimaryKeyQueryId="false"
+               selectByExampleQueryId="false"
+
+        >
+            <!--生成的java类继承BaseDomain-->
+            <!--			<property name="rootClass" value="com.sitech.crmtpd.customer.common.BaseDomain"/>-->
+        </table>
+
+    </context>
+</generatorConfiguration>
