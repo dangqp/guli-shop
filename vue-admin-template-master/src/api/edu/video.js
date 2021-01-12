@@ -17,4 +17,19 @@ export default {
             method: 'delete'
           })
     },
+  //获取小节
+  getVideoInfoById(id) {
+    return request({
+      url: '/eduservice/video/'+id,
+      method: 'get'
+    })
+  },
+  //修改小节
+  videoinfo(video) {
+    return request({
+      url: '/eduservice/video/updVideo',
+      method: 'post',
+      data: video
+    })
+  },
 }
