@@ -56,5 +56,10 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
         wrapper.eq("course_id",courseId);
         baseMapper.delete(wrapper);
     }
+
+    @Override
+    public void updEduVideo(EduVideo eduVideo) {
+
+    }
 }
 
