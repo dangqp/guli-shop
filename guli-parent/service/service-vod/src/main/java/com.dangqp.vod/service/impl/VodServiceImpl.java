@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Title:com.dangqp.vod.service.impl.VodServiceImpl
@@ -35,7 +36,6 @@ public class VodServiceImpl implements VodService {
         try {
             //accessKeyId, accessKeySecret
             //fileName：上传文件原始名称
-            // 01.03.09.mp4
             String fileName = file.getOriginalFilename();
             //title：上传之后显示名称
             String title = fileName.substring(0, fileName.lastIndexOf("."));
@@ -86,8 +86,11 @@ public class VodServiceImpl implements VodService {
         list.add("11");
         list.add("22");
         list.add("33");
+        list.add("");
         // 11,22,33
         String join = StringUtils.join(list.toArray(), ",");
         System.out.println(join);
+        List<String> collect = list.stream().filter( a -> StringUtils.isEmpty( a ) ).collect( Collectors.toList() );
+        System.out.println(collect);
     }
 }
