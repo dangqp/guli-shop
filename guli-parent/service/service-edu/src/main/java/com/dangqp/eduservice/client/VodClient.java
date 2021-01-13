@@ -1,6 +1,5 @@
 package com.dangqp.eduservice.client;
 
-import com.baomidou.mybatisplus.extension.api.R;
 import commonutils.Result;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;

@@ -38,15 +38,17 @@ public class EduVideoServiceImpl extends ServiceImpl<EduVideoMapper, EduVideo> i
 
         // List<EduVideo>变成List<String>
         List<String> videoIds = new ArrayList<>();
-        for (int i = 0; i < eduVideoList.size(); i++) {
-            EduVideo eduVideo = eduVideoList.get(i);
-            String videoSourceId = eduVideo.getVideoSourceId();
-            if(!StringUtils.isEmpty(videoSourceId)) {
-                //放到videoIds集合里面
-                videoIds.add(videoSourceId);
-            }
-        }
-
+//        for (int i = 0; i < eduVideoList.size(); i++) {
+//            EduVideo eduVideo = eduVideoList.get(i);
+//            String videoSourceId = eduVideo.getVideoSourceId();
+//            if(!StringUtils.isEmpty(videoSourceId)) {
+//                //放到videoIds集合里面
+//                videoIds.add(videoSourceId);
+//            }
+//        }
+        eduVideoList.stream().filter(edu->!StringUtils.isEmpty(edu.getVideoSourceId())).forEach(eduVideo -> {
+            videoIds.add(eduVideo.getVideoSourceId());
+        } );
         //根据多个视频id删除多个视频
         if(videoIds.size()>0) {
             vodClient.deleteBatch(videoIds);
