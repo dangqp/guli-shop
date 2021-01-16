@@ -10,7 +10,15 @@ import org.springframework.util.StringUtils;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
-
+/**
+ * Title:commonutils.JwtUtils
+ * Description: 描述【JwtUtils工具类】
+ * Copyright: Copyright (c) 2018
+ * Company: 
+ * @author dangqp
+ * @version 1.0
+ * @created  2021/1/16 19:04
+ */
 public class JwtUtils {
 
     //常量
