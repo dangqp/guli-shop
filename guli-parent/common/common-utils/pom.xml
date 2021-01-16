@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>common_utils</artifactId>
+    <artifactId>common-utils</artifactId>
 
     <dependencies>
         <!-- JWT-->

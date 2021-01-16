@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.dangqp</groupId>
-            <artifactId>common_utils</artifactId>
+            <artifactId>common-utils</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
