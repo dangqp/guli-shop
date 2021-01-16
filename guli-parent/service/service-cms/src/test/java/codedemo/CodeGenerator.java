@@ -22,7 +22,7 @@ public class CodeGenerator {
         // 2、全局配置
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
-        gc.setOutputDir( "E:\\persion-work\\guli\\guli-parent\\service\\service-cms" + "/src/main/java" );
+        gc.setOutputDir( "E:\\persion-work\\guli\\guli-parent\\service\\service-acl" + "/src/main/java" );
 
         gc.setAuthor("dangqp");
         gc.setOpen(false); //生成后是否打开资源管理器
@@ -48,7 +48,7 @@ public class CodeGenerator {
 
         // 4、包配置
         PackageConfig pc = new PackageConfig();
-        pc.setModuleName("cms"); //模块名
+        pc.setModuleName("acl"); //模块名
         //包  com.atguigu.eduservice
         pc.setParent("com.dangqp");
         //包  com.atguigu.eduservice.controller

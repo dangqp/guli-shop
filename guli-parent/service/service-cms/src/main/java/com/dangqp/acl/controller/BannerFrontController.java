@@ -1,9 +1,9 @@
-package com.dangqp.cms.controller;
+package com.dangqp.acl.controller;
 
 
 
-import com.dangqp.cms.entity.CrmBanner;
-import com.dangqp.cms.service.CrmBannerService;
+import com.dangqp.acl.entity.CrmBanner;
+import com.dangqp.acl.service.CrmBannerService;
 import commonutils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;

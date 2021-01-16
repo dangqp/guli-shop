@@ -1,6 +1,6 @@
-package com.dangqp.cms.mapper;
+package com.dangqp.acl.mapper;
 
-import com.dangqp.cms.entity.CrmBanner;
+import com.dangqp.acl.entity.CrmBanner;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

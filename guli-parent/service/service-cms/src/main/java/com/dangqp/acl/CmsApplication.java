@@ -1,4 +1,4 @@
-package com.dangqp.cms;
+package com.dangqp.acl;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan({"com.dangqp"}) //指定扫描位置
-@MapperScan("com.dangqp.cms.mapper")
+@MapperScan("com.dangqp.acl.mapper")
 @EnableDiscoveryClient  //nacos注册
 public class CmsApplication {
     public static void main(String[] args) {

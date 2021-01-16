@@ -1,4 +1,4 @@
-package com.dangqp.cms.entity;
+package com.dangqp.acl.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;

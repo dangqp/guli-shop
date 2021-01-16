@@ -1,6 +1,6 @@
-package com.dangqp.cms.service;
+package com.dangqp.acl.service;
 
-import com.dangqp.cms.entity.CrmBanner;
+import com.dangqp.acl.entity.CrmBanner;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;

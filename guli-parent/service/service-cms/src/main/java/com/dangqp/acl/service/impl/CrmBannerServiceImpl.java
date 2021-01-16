@@ -1,9 +1,9 @@
-package com.dangqp.cms.service.impl;
+package com.dangqp.acl.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.dangqp.cms.entity.CrmBanner;
-import com.dangqp.cms.mapper.CrmBannerMapper;
-import com.dangqp.cms.service.CrmBannerService;
+import com.dangqp.acl.entity.CrmBanner;
+import com.dangqp.acl.mapper.CrmBannerMapper;
+import com.dangqp.acl.service.CrmBannerService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
