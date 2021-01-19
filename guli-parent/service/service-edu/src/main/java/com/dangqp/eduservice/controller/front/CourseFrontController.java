@@ -52,8 +52,8 @@ public class CourseFrontController {
         //根据课程id查询章节和小节
         List<ChapterVo> chapterVideoList = chapterService.getChapterVideoByCourseId(courseId);
         //根据课程id和用户id查询当前课程是否已经支付过了
-        boolean buyCourse = ordersClient.isBuyCourse(courseId, JwtUtils.getMemberIdByJwtToken(request));
-        return Result.ok().data("courseWebVo",courseWebVo).data("chapterVideoList",chapterVideoList).data("isBuy",buyCourse);
+       // boolean buyCourse = ordersClient.isBuyCourse(courseId, JwtUtils.getMemberIdByJwtToken(request));
+        return Result.ok().data("courseWebVo",courseWebVo).data("chapterVideoList",chapterVideoList).data("isBuy",true);
     }
 
     //根据课程id查询课程信息
