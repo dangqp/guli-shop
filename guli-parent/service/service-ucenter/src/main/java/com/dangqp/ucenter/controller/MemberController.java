@@ -61,8 +61,8 @@ public class MemberController {
     }
 
     //根据用户id获取用户信息
-    @PostMapping("getUserInfoOrder/{id}")
-    public UcenterMemberOrder getUserInfoOrder(@PathVariable String id) {
+    @GetMapping("getUserInfoOrder/{id}")
+    public UcenterMemberOrder getUserInfoOrder(@PathVariable("id") String id) {
         Member member = memberService.getById(id);
         //把member对象里面值复制给UcenterMemberOrder对象
         UcenterMemberOrder ucenterMemberOrder = new UcenterMemberOrder();
