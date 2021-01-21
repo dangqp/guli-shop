@@ -1,4 +1,4 @@
-package com.dangqp.order.controller.controller;
+package com.dangqp.order.controller;
 
 
 

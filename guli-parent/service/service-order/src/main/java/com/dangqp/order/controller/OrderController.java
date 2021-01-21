@@ -1,4 +1,4 @@
-package com.dangqp.order.controller.controller;
+package com.dangqp.order.controller;
 
 
 
@@ -28,7 +28,7 @@ public class OrderController {
     //1 生成订单的方法
     @PostMapping("createOrder/{courseId}")
     public Result saveOrder(@PathVariable String courseId, HttpServletRequest request) {
-        //创建订单，返回订单号
+        //创建订单，返回订单号  从request中获取用户ID
         String orderNo =
                 orderService.createOrders(courseId, JwtUtils.getMemberIdByJwtToken(request));
         return Result.ok().data("orderId",orderNo);
