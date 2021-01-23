@@ -112,7 +112,14 @@
           this.getInfo(id)
         } else { //路径没有id值，做添加
           //清空表单
-          this.teacher = {}
+          this.teacher = {
+            name: '',
+            sort: 0,
+            level: 1,
+            career: '',
+            intro: '',
+            avatar: ''
+          }
         }
       },
       //根据讲师id查询的方法
