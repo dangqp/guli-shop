@@ -22,7 +22,7 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("/eduservice/video")
-@CrossOrigin
+//@CrossOrigin
 public class EduVideoController {
     @Autowired
     private EduVideoService videoService;

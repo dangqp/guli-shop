@@ -24,7 +24,7 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("/ucenter/member")
-@CrossOrigin
+//@CrossOrigin
 public class MemberController {
 
     @Autowired
