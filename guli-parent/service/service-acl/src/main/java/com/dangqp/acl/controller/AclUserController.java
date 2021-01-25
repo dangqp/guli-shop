@@ -99,5 +99,12 @@ public class AclUserController {
         roleService.saveUserRoleRealtionShip( userId, roleId );
         return Result.ok();
     }
+
+    @ApiOperation(value = "获取角色")
+    @GetMapping("get/{id}")
+    public Result get(@PathVariable String id) {
+        AclUser aclUser = userService.getById(id);
+        return Result.ok().data("item", aclUser);
+    }
 }
 

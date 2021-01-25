@@ -2,6 +2,7 @@ package com.dangqp.acl.helper;
 
 import com.alibaba.fastjson.JSONObject;
 import com.dangqp.acl.entity.AclPermission;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
@@ -41,26 +42,26 @@ public class MemuHelper {
      * @param treeNodes
      * @return
      */
-    public static List<JSONObject> bulid1(List<AclPermission> treeNodes) {
+    public static List<JSONObject> bulid(List<AclPermission> treeNodes) {
         List<JSONObject> meuns = new ArrayList<>();
         if(treeNodes.size() == 1) {
             AclPermission topNode = treeNodes.get(0);
             //左侧一级菜单
             List<AclPermission> oneMeunList = topNode.getChildren();
            for(AclPermission one :oneMeunList) {
-//               JSONObject oneMeun = new JSONObject();
-//                oneMeun.put("path", one.getPath());
-//                oneMeun.put("component", one.getComponent());
-//                oneMeun.put("redirect", "noredirect");
-//                oneMeun.put("name", "name_"+one.getId());
-//                oneMeun.put("hidden", false);
+               JSONObject oneMeun = new JSONObject();
+                oneMeun.put("path", one.getPath());
+                oneMeun.put("component", one.getComponent());
+                oneMeun.put("redirect", "noredirect");
+                oneMeun.put("name", "name_"+one.getId());
+                oneMeun.put("hidden", false);
+
+                JSONObject oneMeta = new JSONObject();
+                oneMeta.put("title", one.getName());
+                oneMeta.put("icon", one.getIcon());
+                oneMeun.put("meta", oneMeta);
 //
-//                JSONObject oneMeta = new JSONObject();
-//                oneMeta.put("title", one.getName());
-//                oneMeta.put("icon", one.getIcon());
-//                oneMeun.put("meta", oneMeta);
-//
-//                List<JSONObject> children = new ArrayList<>();
+                List<JSONObject> children = new ArrayList<>();
 //                List<AclPermission> twoMeunList = one.getChildren();
 //                for(AclPermission two :twoMeunList) {
 //                    JSONObject twoMeun = new JSONObject();
@@ -92,14 +93,14 @@ public class MemuHelper {
 //                        children.add(threeMeun);
 //                    }
 //                }
-                //oneMeun.put("children", children);
-                meuns.add(bulidPersion( one ));
+                oneMeun.put("children",  bulidPersion(one.getChildren(),children));
+                meuns.add(oneMeun);
             }
         }
         return meuns;
     }
 
-    public static List<JSONObject> bulid(List<AclPermission> treeNodes) {
+    public static List<JSONObject> bulid1(List<AclPermission> treeNodes) {
         List<JSONObject> meuns = new ArrayList<>();
         if(treeNodes.size() == 1) {
             AclPermission topNode = treeNodes.get(0);
@@ -158,35 +159,40 @@ public class MemuHelper {
         return meuns;
     }
 
-    public static JSONObject bulidPersion(AclPermission one){
-        JSONObject oneMeun = new JSONObject();
-        oneMeun.put("path", one.getPath());
-        oneMeun.put("component", one.getComponent());
-        if ("2".equals( one.getLevel() )){
-            oneMeun.put("redirect", "noredirect");
-        }
-        oneMeun.put("name", "name_"+one.getId());
-        oneMeun.put("hidden", false);
+    public static List<JSONObject> bulidPersion(List<AclPermission> twoMeunList,List<JSONObject> children){
+        twoMeunList.stream().filter(one->!StringUtils.isEmpty(one.getPath())).forEach(two->{
+            JSONObject twoMeun = new JSONObject();
+            twoMeun.put("path", two.getPath());
+            twoMeun.put("component", two.getComponent());
+            twoMeun.put("name", "name_"+two.getId());
+            boolean hiddenFllag = false;
+            //第四级菜单不显示
+            if (NumberUtils.compare(4,two.getLevel())==0){
+                hiddenFllag=true;
+            }
+            twoMeun.put("hidden", hiddenFllag);
 
-        JSONObject oneMeta = new JSONObject();
-        oneMeta.put("title", one.getName());
-        oneMeta.put("icon", one.getIcon());
-        oneMeun.put("meta", oneMeta);
-        List<JSONObject> children = new ArrayList<>();
-        List<AclPermission> tueMeunList = one.getChildren();
-        if (tueMeunList != null && !tueMeunList.isEmpty()) {
-            tueMeunList.stream().forEach( two -> {
-                if("4".equals(two.getLevel())) {
-                    if(!StringUtils.isEmpty(two.getPath())) {
-                        children.add( bulidPersion( two ));
-                    }
-                }else{
-                    children.add( bulidPersion( two ));
-                }
-            } );
-        }
-        oneMeun.put("children",children);
-
-        return oneMeun;
+            JSONObject twoMeta = new JSONObject();
+            twoMeta.put("title", two.getName());
+            twoMeun.put("meta", twoMeta);
+            children.add(twoMeun);
+            bulidPersion(two.getChildren(),children);
+        });
+//        for(AclPermission two :twoMeunList) {
+//            if (StringUtils.isEmpty(two.getPath()))
+//                continue;
+//            JSONObject twoMeun = new JSONObject();
+//            twoMeun.put("path", two.getPath());
+//            twoMeun.put("component", two.getComponent());
+//            twoMeun.put("name", "name_"+two.getId());
+//            twoMeun.put("hidden", false);
+//
+//            JSONObject twoMeta = new JSONObject();
+//            twoMeta.put("title", two.getName());
+//            twoMeun.put("meta", twoMeta);
+//            children.add(twoMeun);
+//            bulidPersion(two.getChildren(),children);
+//        }
+        return  children;
     }
 }
